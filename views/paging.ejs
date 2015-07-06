@@ -1,0 +1,16 @@
+<br />
+<div class="article-paging">
+    <% if (!isFirstPage) { %>
+    <span class="prepage">
+        <span class="glyphicon glyphicon-menu-left"></span>
+        <a title="上一页" href="?p=<%= page-1 %>">上一页</a>
+    </span>
+    <% } %>
+
+    <% if (!isLastPage) { %>
+    <span class="nextpage">
+        <a title="下一页" href="?p=<%= page+1 %>">下一页</a>
+        <span class="glyphicon glyphicon-menu-right"></span>
+    </span>
+    <% } %>
+</div>

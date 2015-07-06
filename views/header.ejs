@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/javascripts/js.js"></script>
+    <script src="/javascripts/shell.js"></script>
+    <script>
+        $(function () { login.initModule(); });
+    </script>
+</head>
+<body>
+<div id="spa">
+    <div class="spa-shell-head">
+        <div class="spa-shell-head-logo">
+            <!--<img src="/images/blog_pic.png" alt=""/>-->
+        </div>
+        <div class="spa-shell-head-title">
+            <h2 class="absolute-mid"> <%= title%> </h2></div>
+        <div class="spa-shell-head-acct">
+            <!--<button class="btn btn-primary" data-toggle="modal" data-target="#login-modal">登录/注册<span class="divider glyphicon glyphicon-user"></span></button>-->
+            <div class="dropdown" id="head-acct-dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" id="head-acct-dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <% if (user) { %>
+                        <%= user.name %>
+                    <% }else{ %>
+                        login
+                    <% } %>
+                    <span class="caret"></span>
+                    <span class="divider glyphicon glyphicon-user"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="head-acct-dropdownMenu1">
+                    <% if (user) { %>
+                        <li role="presentation" id="acct-logout"><a role="menuitem" tabindex="-1" href="#">退出</a></li>
+                    <% }else { %>
+                        <li role="presentation" id="acct-login"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#login-modal">登录</a></li>
+                        <li role="presentation" id="acct-reg"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#reg-modal">注册</a></li>
+                   <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="spa-shell-head-search">
+            <form class="form-inline" action="/search" method="GET">
+                <div class="form-group" style="width: 100%;">
+                    <label class="sr-only" for="exampleInputAmount">input search content</label>
+                    <div class="input-group" style="width: 100%;">
+                            <!--<input type="text" name="keyword" placeholder="SEARCH" class="search" />-->
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="search" name="keyword">
+
+                        <div class="input-group-addon" style="width: 18px;">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal fade" id="login-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" method="post">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputUserName">UserName</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="login-username" placeholder="UserName" name="name"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputPassword">Password</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" id="login-password" placeholder="Password" name="password"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label for=""><input type="checkbox"/>Enable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group">
+                                <div class="col-sm-offset-7 col-sm-5">
+                                    <input class="btn btn-success" data-dismiss="modal" type="submit" value="Login" id="loginEventId"/>
+                                    <button class="btn btn-info" data-dismiss="modal" type="button">Reset</button>
+                                    <button class="btn btn-inverse" data-dismiss="modal" type="button">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="reg-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Register</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" method="post">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputUserName">UserName</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="reg-Username" placeholder="UserName" name="name"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputPassword">Password</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" id="reg-password" placeholder="Password" name="password"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputPassword">Sure Password</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" id="reg-password-repeat" placeholder="Password" name="password-repeat"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputPassword">Email</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="email" id="reg-email" placeholder="email" name="email"/>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group">
+                                <div class="col-sm-offset-7 col-sm-5">
+                                    <input class="btn btn-success" data-dismiss="modal" type="submit" value="Register" id="registerEventId"/>
+                                    <button class="btn btn-info" data-dismiss="modal" type="button">Reset</button>
+                                    <button class="btn btn-inverse" data-dismiss="modal" type="button">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+

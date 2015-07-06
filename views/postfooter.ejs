@@ -1,0 +1,133 @@
+
+</div>
+</div>
+<div class="spa-shell-modal modal fade" id="markdown-help-modal" data-show="false" style="width:23em;height: 58%;top:150px;right: 22px;bottom: 0;left: 82%;z-index:1050;display: block;overflow: hidden;outline: 0;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" arial-hiden="true">&times;</button>
+        <h4 class="modal-title">MarkDown 语法帮助</h4>
+    </div>
+    <div class="modal-body">
+        <ul class="nav nav-tabs" sty>
+            <li><a href="#icon-bold" data-toggle="tab">粗体</a></li>
+            <li><a href="#icon-italic" data-toggle="tab">斜体</a></li>
+            <li><a href="#icon-link" data-toggle="tab">超链接</a></li>
+            <li><a href="#icon-magnet" data-toggle="tab">引用</a></li>
+            <li><a href="#icon-code" data-toggle="tab">代码</a></li>
+            <li><a href="#icon-cameriera" data-toggle="tab">照片</a></li>
+            <li><a href="#icon-orlist" data-toggle="tab">有序列表</a></li>
+            <li><a href="#icon-urlist" data-toggle="tab">无序列表</a></li>
+            <li><a href="#icon-header" data-toggle="tab">标题</a></li>
+            <li><a href="#icon-horizon" data-toggle="tab">横线</a></li>
+        </ul>
+        <div class="tab-content" style="width: 14em;margin-left: 0.7em;">
+            <div class="tab-pane active" id="icon-bold">
+                粗体的使用是在需要加粗的文字前后各加两个“*”，如下： <br/>
+                <br/>
+                <i>**这个是粗体**</i>  <br/> <br/>
+                <i>*这个是斜体*</i> <br/> <br/>
+                <i>***这个是粗体加斜体***</i> <br/> <br/>
+            </div>
+            <div class="tab-pane" id="icon-italic">
+                粗体的使用是在需要加粗的文字前后各加两个“*”，而斜体的使用则是在需要斜体的文字前后各加一个“*”，如果要使用粗体和斜体，那么就是在需要操作的文字前后各加三个“*”。如下： <br/>
+                <br/>
+                <i>**这个是粗体**</i> <br/> <br/>
+                <i>*这个是斜体*</i> <br/> <br/>
+                <i>***这个是粗体加斜体***</i> <br/> <br/>
+            </div>
+            <div class="tab-pane" id="icon-link">
+                在文中直接加链接，中括号中是需要添加链接的文字，圆括号中是需要添加的链接，如下： <br/>
+                <br/>
+                <i>[link text](http://example.com/ "optional title")</i> <br/>
+                <br/>
+                在引用中加链接，第一个中括号添加需要添加的文字，第二个中括号中是引用链接的id，之后在引用中，使用id加链接：如下： <br/>
+                <br/>
+                <i>[link text][id]</i> <br/>
+                <i>[id]: http://example.com/ "optional title here"</i> <br/>
+                <br/>
+                在文中直接引用链接，直接使用尖括号，把链接加入到尖括号中就可以实现，如下： <br/>
+                <br/>
+                <i>http://example.com/ or address@example.com</i> <br/>
+                <br/>
+            </div>
+            <div class="tab-pane" id="icon-magnet">
+                引用的格式是使用符号“>”后面书写文字，及可以使用引用。如下： <br/>
+                <br/>
+                <i>>这个是引用</i> <br/>
+                <i>> 是不是和电子邮件中的</i> <br/>
+                <i>> 引用格式很像</i> <br/>
+            </div>
+            <div class="tab-pane" id="icon-code">
+                在需要高亮的代码块的前一行及后一行使用三个反引号“`”，同时第一行反引号后面表面代码块所使用的语言，如下： <br/>
+                <br/>
+                <i>```ruby</i> <br/>
+                <i>require 'redcarpet'</i> <br/>
+                <i>markdown = Redcarpet.new("Hello World!")</i> <br/>
+                <i>puts markdown.to_html</i> <br/>
+            </div>
+            <div class="tab-pane" id="icon-cameriera">
+                插入互联网上图片，格式如下： <br/>
+                <br/>
+                <i>![这里写图片描述](http://img3.douban.com/mpic/s1108264.jpg)</i> <br/> <br/>
+                <i>![这里写图片描述][jane-eyre-douban]</i> <br/> <br/>
+                <i>[jane-eyre-douban]: http://img3.douban.com/mpic/s1108264.jpg</i> <br/> <br/>
+            </div>
+            <div class="tab-pane" id="icon-orlist">
+                有序列表的使用，在数字及符号“.”后加空格几个，如下： <br/>
+                <br/>
+                <i>1. 有序列表1</i> <br/> <br/>
+                <i>2. 有序列表2</i> <br/> <br/>
+                <i>3. 有序列表3</i> <br/> <br/>
+                <br/>
+                有序列表如果要区分层级，也可以在数字前加空格。 <br/>
+            </div>
+            <div class="tab-pane" id="icon-urlist">
+                无序列表的使用，在符号“-”后加空格使用。如下： <br/>
+                <br/>
+                <i>- 无序列表1</i> <br/>
+                <i>- 无序列表2</i> <br/>
+                <i>- 无序列表3</i> <br/>
+                <br/>
+                如果要控制列表的层级，则需要在符号“-”前使用空格。如下： <br/>
+                <br/>
+                <i>- 无序列表1</i> <br/>
+                <i>- 无序列表2</i> <br/>
+                <i>- 无序列表2.1</i> <br/>
+                <i>- 列表内容</i> <br/>
+                <i>- 列表内容</i> <br/>
+            </div>
+            <div class="tab-pane" id="icon-header">
+                在文字写书写不同数量的#可以完成不同的标题，如下： <br/>
+                <br/>
+                <i># 一级标题</i> <br/>
+                <i>## 二级标题</i> <br/>
+                <i>### 三级标题</i> <br/>
+                <i>#### 四级标题</i> <br/>
+                <i>##### 五级标题</i> <br/>
+                <i>###### 六级标题</i> <br/>
+                <br/>
+                等号及减号也可以进行标题的书写，不过只能书写二级标题，并且需要写在文字的下面，减号及等号的数量不会影响标题的基数，如下： <br/>
+                <br/>
+                <i>二级标题</i> <br/>
+                <i>=========</i> <br/>
+                <br/>
+                <i>二级标题</i> <br/>
+                <i>---------</i> <br/>
+            </div>
+            <div class="tab-pane" id="icon-horizon">
+                可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，同时需要在分隔线的上面空一行。如下： <br/>
+                <br/>
+                <i>---</i> <br/>
+                <i>****</i> <br/>
+                <i>___</i> <br/>
+                <br/>
+                删除线的使用，在需要删除的文字前后各使用两个符合“~”，如下 <br/>
+                <br/>
+                <i>~~Mistaken text.~~</i> <br/>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

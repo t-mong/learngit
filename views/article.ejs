@@ -1,0 +1,70 @@
+<%- include header %>
+<div class="spa-shell-main">
+    <div class="spa-shell-main-nav">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="navActive" id="main-nav-home">
+                <a href="#" title="主页" class="font12">Home</a>
+            </li>
+            <li id="main-nav-archive"><a href="/archive" title="存档" class="font12">Archive</a></li>
+            <li id="main-nav-tag"><a href="/tags" title="标签" class="font12">Tags</a></li>
+            <% if (user) { %>
+            <li id="main-nav-post"><a href="#" title="发表" class="font12">Post</a></li>
+            <li id="main-nav-upload"><a href="#" title="上传" class="font12">Upload</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="spa-shell-main-content">
+        <article class="article-article">
+            <% if (error) { %>
+            <div><%= error %> </div>
+            <% } %>
+
+            <% if (user && (user.name == post.name)) { %>
+                <span class="span-eidt"><a class="edit-edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+                        <span class="glyphicon glyphicon-pencil"></span> 编辑</a></span>
+                <span class="span-edit"><a class="edit-remove" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" style="color: red;">
+                        <span class="glyphicon glyphicon-remove"></span> 删除</a></span>
+
+                <% var flag = 1 %>
+                <% if (user && (user.name != post.name)) { %>
+                <% if ((post.reprint_info.reprint_from != undefined) && (user.name == post.reprint_info.reprint_from.name)) { %>
+                <% flag = 0 %>
+                <% } %>
+                <% if ((post.reprint_info.reprint_to != undefined)) { %>
+                <% post.reprint_info.reprint_to.forEach(function (reprint_to, index) { %>
+                <% if (user.name == reprint_to.name) { %>
+                <% flag = 0 %>
+                <% } %>
+                <% }) %>
+                <% } %>
+                <% } else { %>
+                <% flag = 0 %>
+                <% } %>
+                <% if (flag) { %>
+                <span><a class="edit" href="/reprint/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">转载</a></span>
+            <% } %>
+            <% } %>
+            <p class="info">
+                作者：<a href="/u/<%= post.name %>"><%= post.name %></a> |
+                日期：<%= post.time.minute %> |
+                标签：
+                <% post.tags.forEach(function (tag, index) { %>
+                <% if (tag) { %>
+                <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+                <% } %>
+                <% }) %>
+            </p>
+            <p><%- post.post %></p>
+            <p class="info">
+                阅读：<%= post.pv %> |
+                评论：<%= post.comments.length %> |
+                转载：
+                <% if (post.reprint_info.reprint_to) { %>
+                <%= post.reprint_info.reprint_to.length %>
+                <% } else { %>
+                <%= 0 %>
+                <% } %>
+            </p>
+        </article>
+        <%- include comment %>
+ <%- include footer %>

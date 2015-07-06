@@ -1,0 +1,63 @@
+<%- include header %>
+<div class="spa-shell-main">
+    <div class="spa-shell-main-nav">
+        <ul class="nav nav-pills nav-stacked">
+            <li id="main-nav-home">
+                <a href="#" title="主页" class="font12">Home</a>
+            </li>
+            <li id="main-nav-archive"><a href="/archive" title="存档" class="font12">Archive</a></li>
+            <li id="main-nav-tag"><a href="/tags" title="标签" class="font12">Tags</a></li>
+            <% if (user) { %>
+            <li class="navActive" id="main-nav-post"><a href="#" title="发表" class="font12">Post</a></li>
+            <li id="main-nav-upload"><a href="#" title="上传" class="font12">Upload</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="spa-shell-main-content">
+        <article class="article-article-p">
+
+            <form method="post" class="article-form">
+                <div class="article-container">
+                    <div class="article-container-title">
+                        <h4>标题 : </h4>
+                    </div>
+                    <div class="article-container-title-input">
+                        <input type="text" name="title" class="article-title-input"/>
+                    </div>
+                    <div class="article-container-tag">
+                        <h6>标签 : </h6>
+                    </div>
+                    <div class="article-container-tag-input">
+                        <input type="text" name="tag1"/>
+                        <input type="text" name="tag2"/>
+                        <input type="text" name="tag3"/>
+                    </div>
+                    <div class="article-container-text">
+                        <h4>正文 : </h4>
+                    </div>
+                    <div class="article-container-markdown">
+                        <!--插入markdown图标-->
+                        <p class="markdown" id="markdown-tip">
+                            <span class="glyphicon glyphicon-bold" data-toggle="tooltip" data-original-title="粗体<strong> Ctrl / Cmd+B"></span>
+                            <span class="glyphicon glyphicon-italic" data-toggle="tooltip" data-original-title="斜体<em> Ctrl / Cmd+I"></span>
+                            <span class="glyphicon glyphicon-link" data-toggle="tooltip" data-original-title="Hypelink<a> Ctrl / Cmd+L"></span>
+                            <span class="glyphicon glyphicon-magnet" data-toggle="tooltip" data-original-title="引用<blockquote> Ctrl / Cmd+Q"></span>
+                            <span class="glyphicon glyphicon-copyright-mark" data-toggle="tooltip" data-original-title="代码<pre><code> Ctrl / Cmd+K"></span>
+                            <span class="glyphicon glyphicon-camera" data-toggle="tooltip" data-original-title="图片<img> Ctrl / Cmd+G"></span>
+                            <span class="glyphicon glyphicon-align-justify" data-toggle="tooltip" data-original-title="有序列表<Ol> Ctrl / Cmd+O"></span>
+                            <span class="glyphicon glyphicon-list" data-toggle="tooltip" data-original-title="无序列表<Ul> Ctrl / Cmd+U"></span>
+                            <span class="glyphicon glyphicon-align-justify" data-toggle="tooltip" data-original-title="标题<h1> / <h2> Ctrl / Cmd+H"></span>
+                            <span class="glyphicon glyphicon-option-horizontal" data-toggle="tooltip" data-original-title="横线<hr> Ctrl / Cmd+R"></span>
+                            <span id="markdown-help" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#markdown-help-modal" data-keyboard="false" data-backdrop="false" data-show="false" style="margin-left: 4em"></span>
+                        </p>
+                    </div>
+                    <div class="article-container-textarea">
+                        <textarea name="post" id="" cols="100" rows="10" class="article-textarea-p"></textarea>
+                    </div>
+                    <div class="article-container-submit">
+                        <input type="submit" value="发表" class="btn btn-success"/>
+                    </div>
+                </div>
+            </form>
+        </article>
+<%- include postfooter %>

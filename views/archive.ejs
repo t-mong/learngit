@@ -1,0 +1,35 @@
+<%- include header %>
+<div class="spa-shell-main">
+    <div class="spa-shell-main-nav">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="navActive" id="main-nav-home">
+                <a href="#" title="主页" class="font12">Home</a>
+            </li>
+            <li id="main-nav-archive"><a href="/archive" title="存档" class="font12">Archive</a></li>
+            <li id="main-nav-tag"><a href="/tags" title="标签" class="font12">Tags</a></li>
+            <% if (user) { %>
+            <li id="main-nav-post"><a href="#" title="发表" class="font12">Post</a></li>
+            <li id="main-nav-upload"><a href="#" title="上传" class="font12">Upload</a></li>
+            <% } %>
+        </ul>
+    </div>
+
+    <div class="spa-shell-main-content">
+        <article class="article-article">
+            <ul class="archive">
+                <% var lastYear = 0 %>
+                <% posts.forEach(function (post, index) { %>
+                <% if (lastYear != post.time.year) { %>
+                <li><h3><%= post.time.year %></h3></li>
+                <% lastYear=post.time.year } %>
+                <li><time><%= post.time.day %></time></li>
+                <li>
+                    <em>
+                        <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+                    </em>
+                </li>
+                <% }) %>
+            </ul>
+        </article>
+
+<%- include footer %>
